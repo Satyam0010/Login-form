@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(90deg, #e2e2e2, #c9d6ff);
+        }
+
+        .welcome-container {
+            background: #fff;
+            border-radius: 30px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            padding: 60px 80px;
+            text-align: center;
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        .welcome-container h1 {
+            font-size: 48px;
+            color: #7494ec;
+            margin-bottom: 20px;
+        }
+
+        .welcome-container h2 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .welcome-container p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .user-icon {
+            font-size: 80px;
+            color: #7494ec;
+            margin-bottom: 20px;
+        }
+
+        .logout-btn {
+            padding: 15px 40px;
+            background: #7494ec;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #5a7dd6;
+        }
+
+        @media screen and (max-width: 650px) {
+            .welcome-container {
+                padding: 40px 30px;
+            }
+
+            .welcome-container h1 {
+                font-size: 36px;
+            }
+
+            .welcome-container h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <i class='bx bxs-user-circle user-icon'></i>
+        <h1>Welcome!</h1>
+        <h2 id="username-display"></h2>
+        <p>You have successfully logged in to your account. We're glad to have you here!</p>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        const username = localStorage.getItem('username');
+        
+        if (!username) {
+            // Redirect to login if not logged in
+            window.location.href = 'index.html';
+        } else {
+            // Display username
+            document.getElementById('username-display').textContent = username;
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('username');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
